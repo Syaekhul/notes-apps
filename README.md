@@ -3,7 +3,7 @@
 ## 📌 Deskripsi  
 Notes Apps adalah aplikasi pencatatan sederhana berbasis web yang memungkinkan pengguna untuk menulis, menyimpan, dan mengelola catatan mereka dengan mudah. Dibangun menggunakan **HTML, CSS, dan JavaScript**, aplikasi ini juga mendukung fitur **dark mode** untuk pengalaman pengguna yang lebih nyaman.  
 
-🔗 **Coba aplikasi secara langsung:**  
+🔗 **Live Demo:**  
 [Notes Apps - Live Demo](https://notes-apps.netlify.app/)  
 
 ## 🚀 Fitur  
