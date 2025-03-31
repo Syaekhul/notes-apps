@@ -1,0 +1,355 @@
+:root {
+  --font-mono: "Geist Mono", sans-serif;
+  --color-maroon: #9f5255;
+  --color-terra-cotta: #e16a54;
+  --color-sandy-brown: #f39e60;
+  --color-green: #5f8b4c;
+  --color-blue: #88aaee;
+  --color-cyan: #0092b8;
+  --color-purple: #59168b;
+  --color-red: #e60076;
+  --color-grey: #1b1718;
+  --color-light-grey: #3b3738;
+  --color-yellow: #fdc700;
+  --color-black: #000;
+  --color-white: #fff;
+  --border: #000;
+  --box-shadow-x: 5px;
+  --box-shadow-y: 5px;
+  --reverse-box-shadow-x: -5px;
+  --reverse-box-shadow-y: -5px;
+  --shadow: var(--box-shadow-x) var(--box-shadow-y) 0px 0px var(--border);
+}
+
+body {
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgb(0, 0, 0),
+      rgb(0, 0, 0) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(0, 0, 0),
+      rgb(0, 0, 0) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+  background-color: var(--color-maroon);
+  background-size: 80px 80px;
+  font-family: var(--font-mono);
+  margin: 0;
+  padding: 20px;
+}
+
+body.dark-mode {
+  background-image: repeating-linear-gradient(
+      0deg,
+      rgb(190, 190, 190),
+      rgb(190, 190, 190) 1px,
+      transparent 1px,
+      transparent 80px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgb(190, 190, 190),
+      rgb(190, 190, 190) 1px,
+      transparent 1px,
+      transparent 80px
+    );
+  background-color: var(--color-grey);
+  background-size: 80px 80px;
+}
+
+#dark-mode-toggle {
+  background: var(--color-purple);
+  color: var(--color-white);
+  border: 3px solid var(--color-black);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode h1,
+body.dark-mode nav {
+  color: var(--color-white) !important;
+}
+
+body h1,
+body nav {
+  color: var(--color-black);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.add-note-container {
+  max-width: 800px;
+  background: var(--color-sandy-brown);
+  padding: 20px;
+  border: 5px solid var(--color-black);
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-container {
+  border: 2px solid var(--border);
+  margin: 10px;
+  padding: 20px;
+  background-color: var(--color-terra-cotta);
+}
+
+.form-group {
+  display: grid;
+  grid-template-rows: auto-fit, 1fr;
+  padding: 2px;
+  width: 100%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 10px;
+}
+
+label {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+input {
+  height: 50px;
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 2px solid var(--color-black);
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input:focus,
+textarea:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+button {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.3rem;
+  border: 2px solid var(--border);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+  border-radius: var(--border-radius);
+  width: 100%;
+  height: 60px;
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+  transform: translateX(4px) translateY(4px);
+  box-shadow: none;
+}
+
+button i {
+  margin-right: 8px;
+}
+
+.dark-mode .add-note-container {
+  color: var(--color-white);
+}
+
+.dark-mode label {
+  color: var(--color-white); /* Label menjadi putih */
+}
+
+.dark-mode input[type="text"],
+.dark-mode textarea {
+  background: var(--color-light-grey);
+  color: var(--color-white);
+}
+
+.dark-mode input:focus,
+.dark-mode textarea:focus {
+  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-black);
+}
+
+.dark-mode .cube-right {
+  background-color: var(--color-purple);
+}
+
+.dark-mode .cube-left {
+  background-color: var(--color-cyan);
+}
+
+.close-modal {
+  background: var(--color-red);
+  color: var(--color-white);
+  font-weight: bold;
+  font-size: 1.2rem;
+  border: 2px solid var(--color-black);
+  width: 100%;
+  padding: 12px;
+  cursor: pointer;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.modal-open {
+  overflow: hidden;
+}
+
+.cube-container-right {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.cube-container-left {
+  position: absolute;
+  left: 20px;
+  bottom: -150%;
+}
+
+.cube-right {
+  width: 80px;
+  height: 80px;
+  background: var(--color-blue);
+  border: 5px solid var(--color-black);
+  animation: cubeRightRotate 15s infinite linear;
+}
+
+.cube-left {
+  width: 80px;
+  height: 80px;
+  background: var(--color-yellow);
+  border: 5px solid var(--color-black);
+  animation: cubeLeftRotate 19s infinite ease-in-out;
+}
+
+@keyframes cubeRightRotate {
+  0% {
+    transform: translateY(-10px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(50px) rotate(180deg);
+  }
+  100% {
+    transform: translateY(-10px) rotate(360deg);
+  }
+}
+
+@keyframes cubeLeftRotate {
+  0%,
+  100% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateY(90px);
+  }
+}
+
+@media (max-width: 768px) {
+  .add-note-container {
+    max-width: 90%;
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .form-container {
+    padding: 15px;
+    margin: 5px;
+  }
+
+  input[type="text"],
+  textarea {
+    font-size: 0.9rem; /* Ukuran teks lebih kecil */
+    padding: 6px;
+  }
+
+  button {
+    font-size: 1rem; /* Kurangi ukuran tombol */
+    height: 50px;
+  }
+
+  .close-modal {
+    font-size: 1rem;
+    padding: 10px;
+  }
+
+  .cube-container-right,
+  .cube-right {
+    width: 40px;
+    height: 40px;
+    top: 100%;
+  }
+
+  .cube-container-left,
+  .cube-left {
+    width: 40px;
+    height: 40px;
+    bottom: -350%;
+  }
+}
+
+@media (max-width: 480px) {
+  .add-note-container {
+    max-width: 95%;
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .form-container {
+    padding: 10px;
+  }
+
+  label {
+    font-size: 1.3rem;
+  }
+
+  button {
+    font-size: 0.9rem;
+    height: 45px;
+  }
+
+  .close-modal {
+    font-size: 0.9rem;
+  }
+
+  .cube-container-right,
+  .cube-container-left {
+    display: none;
+  }
+}
