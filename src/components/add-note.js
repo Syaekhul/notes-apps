@@ -1,4 +1,5 @@
-import { addNoteToStorage } from "../data/note-storage.js";
+import NotesApi from "../data/remote/note-api";
+import Swal from "sweetalert2";
 
 class AddNote extends HTMLElement {
   constructor() {
@@ -43,7 +44,7 @@ class AddNote extends HTMLElement {
   }
 
   showModal() {
-    this.modalOverlay.style.display = "flex"; // ✅ FIXED: Pastikan modal muncul
+    this.modalOverlay.style.display = "flex";
     document.body.classList.add("modal-open");
   }
 
@@ -75,25 +76,49 @@ class AddNote extends HTMLElement {
     this.submitButton.disabled = !isValid;
   }
 
-  addNote(event) {
+  async addNote(event) {
     event.preventDefault();
 
     const title = this.titleInput.value.trim();
     const body = this.bodyInput.value.trim();
 
-    const newNote = {
-      id: `notes-${Date.now()}`,
-      title,
-      body,
-      createdAt: new Date().toISOString(),
-      archived: false
-    };
+    const loading = Swal.fire({
+      title: "Menambahkan...",
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading(),
+    });
 
-    addNoteToStorage(newNote);
-    this.dispatchEvent(new CustomEvent("noteAdded", { bubbles: true }));
+    try {
+      const newNote = await NotesApi.createNote(title, body);
+      Swal.close();
 
-    this.noteForm.reset();
-    this.hideModal();
+      if (newNote) {
+        document.dispatchEvent(new Event("noteAdded"));
+        this.noteForm.reset();
+        this.submitButton.disabled = true;
+        this.hideModal();
+
+        Swal.fire({
+          icon: "success",
+          title: "Berhasil!",
+          text: "Catatan berhasil ditambahkan.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Gagal",
+          text: "Gagal menambahkan catatan. Silahkan coba lagi.",
+        });
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Terjadi kesalahan saat menambahkan catatan.",
+      });
+    }
   }
 }
 

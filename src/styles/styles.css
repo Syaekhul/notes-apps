@@ -22,7 +22,8 @@
 }
 
 body {
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       0deg,
       rgb(0, 0, 0),
       rgb(0, 0, 0) 1px,
@@ -44,7 +45,8 @@ body {
 }
 
 body.dark-mode {
-  background-image: repeating-linear-gradient(
+  background-image:
+    repeating-linear-gradient(
       0deg,
       rgb(190, 190, 190),
       rgb(190, 190, 190) 1px,
@@ -80,6 +82,245 @@ body.dark-mode nav {
 body h1,
 body nav {
   color: var(--color-black);
+}
+
+/* Header Bar */
+header-bar {
+  display: block;
+  width: 100%;
+}
+
+header-bar header {
+  padding: 15px 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+header-bar nav {
+  color: var(--color-black);
+  transition: color 0.3s ease;
+}
+
+header-bar .button-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-right: 40px;
+}
+
+header-bar button {
+  background: var(--color-purple);
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  border: 3px solid var(--color-black);
+  box-shadow: 4px 4px 0 0 var(--color-black);
+  transition: all 0.3s ease-in-out;
+  width: 50px;
+  height: 50px;
+}
+
+header-bar button:hover {
+  transform: translateX(4px) translateY(4px);
+  box-shadow: none;
+}
+
+header-bar button i {
+  font-size: 1.2em;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+header-bar.dark-mode nav {
+  color: var(--color-white);
+}
+
+header-bar .button-container button {
+  background: var(--color-purple);
+}
+
+header-bar .add-note-btn {
+  background: var(--color-yellow);
+}
+
+header-bar.dark-mode .add-note-btn {
+  background: var(--color-yellow);
+}
+
+header-bar.dark-mode .note-archive {
+  background: var(--color-yellow);
+}
+
+header-bar.dark-mode #dark-mode-toggle {
+  background: var(--color-yellow);
+}
+
+header-bar.dark-mode button i {
+  color: var(--color-black);
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #000000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 10px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading p {
+  font-size: 16px;
+  color: #333;
+}
+
+/* Notes List */
+note-list .container {
+  max-width: 900px;
+  margin: 80px auto 20px;
+  background: var(--color-blue);
+  padding: 20px;
+  border: 5px solid var(--color-black);
+  box-shadow: var(--shadow);
+}
+
+note-list h1 {
+  text-align: center;
+  color: var(--color-black);
+}
+
+note-list ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 15px;
+}
+
+note-list .note-item {
+  background: var(--color-white);
+  padding: 15px;
+  border-radius: 4px;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+note-list .note-item h2 {
+  margin: 0 0 10px;
+  font-size: 1.2em;
+  color: var(--color-black);
+}
+
+note-list .note-item p {
+  margin: 0;
+  color: var(--color-black);
+}
+
+note-list .note-item small {
+  font-size: 12px;
+  color: gray;
+}
+
+note-list .note-item .button-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 6px 6px;
+}
+
+note-list .note-item .button-container .delete-btn {
+  background: var(--color-red);
+}
+
+/* DARK MODE */
+note-list.dark-mode .container {
+  background: var(--color-cyan);
+}
+
+note-list.dark-mode h1 {
+  color: var(--color-white);
+}
+
+note-list.dark-mode .note-item {
+  background: var(--color-grey);
+}
+
+note-list.dark-mode .note-item h2,
+note-list.dark-mode .note-item p,
+note-list.dark-mode .note-item small {
+  color: var(--color-white);
+}
+
+note-list.dark-mode .note-item .archive-btn {
+  background: var(--color-cyan);
+}
+
+/* Footer Bar */
+footer {
+  padding: 15px 20px;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-container p {
+  font-size: 1em;
+  font-weight: bold;
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  gap: 10px;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(38, 38, 38);
+  border-radius: 8px;
+  border: 3px solid var(--border);
+  box-shadow: var(--shadow);
+  color: white;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  transform: translateX(5px) translateY(5px);
+  box-shadow: none;
 }
 
 .modal-overlay {
@@ -141,6 +382,7 @@ input {
 
 input[type="text"],
 textarea {
+  font-family: var(--font-mono);
   width: 100%;
   padding: 8px;
   border: 2px solid var(--color-black);
@@ -151,7 +393,9 @@ textarea {
 
 input:focus,
 textarea:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px black;
 }
 
 textarea {
@@ -171,16 +415,14 @@ button {
   height: 60px;
   padding: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition:
+    transform 0.2s ease-in-out,
+    box-shadow 0.2s ease-in-out;
 }
 
 button:hover {
   transform: translateX(4px) translateY(4px);
   box-shadow: none;
-}
-
-button i {
-  margin-right: 8px;
 }
 
 .dark-mode .add-note-container {
@@ -199,15 +441,17 @@ button i {
 
 .dark-mode input:focus,
 .dark-mode textarea:focus {
-  box-shadow: 0 0 0 2px var(--color-white), 0 0 0 4px var(--color-black);
+  box-shadow:
+    0 0 0 2px var(--color-white),
+    0 0 0 4px var(--color-black);
 }
 
-.dark-mode .cube-right {
-  background-color: var(--color-purple);
-}
-
-.dark-mode .cube-left {
+.dark-mode .square-right {
   background-color: var(--color-cyan);
+}
+
+.dark-mode .square-left {
+  background-color: var(--color-yellow);
 }
 
 .close-modal {
@@ -227,58 +471,54 @@ button i {
   overflow: hidden;
 }
 
-.cube-container-right {
+.large-right {
   position: absolute;
   right: 20px;
-  top: 50%;
-  transform: translateY(-50%);
+  top: 30%;
 }
 
-.cube-container-left {
+.large-left {
   position: absolute;
   left: 20px;
-  bottom: -150%;
 }
 
-.cube-right {
+.square-right {
   width: 80px;
   height: 80px;
-  background: var(--color-blue);
+  background: var(--color-purple);
   border: 5px solid var(--color-black);
-  animation: cubeRightRotate 15s infinite linear;
 }
 
-.cube-left {
+.square-left {
   width: 80px;
   height: 80px;
-  background: var(--color-yellow);
+  background: var(--color-terra-cotta);
   border: 5px solid var(--color-black);
-  animation: cubeLeftRotate 19s infinite ease-in-out;
-}
-
-@keyframes cubeRightRotate {
-  0% {
-    transform: translateY(-10px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(50px) rotate(180deg);
-  }
-  100% {
-    transform: translateY(-10px) rotate(360deg);
-  }
-}
-
-@keyframes cubeLeftRotate {
-  0%,
-  100% {
-    transform: translateX(10px);
-  }
-  50% {
-    transform: translateY(90px);
-  }
 }
 
 @media (max-width: 768px) {
+  note-list .container {
+    max-width: 600px;
+  }
+
+  note-list ul {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .large-left {
+    left: 5px;
+  }
+
+  .large-right {
+    right: 5px;
+  }
+
+  .square-left,
+  .square-right {
+    width: 45px;
+    height: 45px;
+  }
+
   .add-note-container {
     max-width: 90%;
     font-size: 16px;
@@ -292,12 +532,12 @@ button i {
 
   input[type="text"],
   textarea {
-    font-size: 0.9rem; /* Ukuran teks lebih kecil */
+    font-size: 0.9rem;
     padding: 6px;
   }
 
   button {
-    font-size: 1rem; /* Kurangi ukuran tombol */
+    font-size: 1rem;
     height: 50px;
   }
 
@@ -322,6 +562,11 @@ button i {
 }
 
 @media (max-width: 480px) {
+  .large-left,
+  .large-right {
+    display: none;
+  }
+
   .add-note-container {
     max-width: 95%;
     padding: 10px;
@@ -351,5 +596,70 @@ button i {
   .cube-container-right,
   .cube-container-left {
     display: none;
+  }
+}
+
+@media (max-width: 426px) {
+  header-bar button {
+    width: 45px;
+    height: 45px;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  ul {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .note-item {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 320px) {
+  header-bar header {
+    font-size: 1.3rem;
+  }
+
+  header-bar button {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header-bar button i {
+    font-size: 0.9rem;
+  }
+
+  .container {
+    max-width: 100%;
+    padding: 10px;
+  }
+
+  ul {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .note-item {
+    width: 92%;
+    padding: 10px;
+    font-size: 0.9em;
+    box-sizing: border-box;
+  }
+
+  note-list .note-item small {
+    font-size: 10px;
+  }
+
+  .note-item button {
+    font-size: 0.9em;
   }
 }
