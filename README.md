@@ -5,6 +5,7 @@ A simple note-taking web application that allows users to create, view, and dele
 ## Features
 ✅ Add new notes  
 ✅ View notes list  
+✅ Archived & Unarchived Notes  
 ✅ Delete notes  
 ✅ Responsive UI  
 
